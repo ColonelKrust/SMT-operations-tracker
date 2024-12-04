@@ -1,7 +1,13 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router";
+import NavigationPage from "./components/NavigationPage.jsx";
 
 export default function App() {
     return (
-        <h1>This is my app!</h1>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<NavigationPage />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
