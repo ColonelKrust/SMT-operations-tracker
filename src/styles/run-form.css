@@ -1,0 +1,9 @@
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.sd-root-modern {
+    --primary: #007EB5
+}
