@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "build": "webpack --mode=development",
-    "start_server": "node src/services/server.js"
+    "build": "webpack --mode=development --watch",
+    "start_server": "npx nodemon src/services/server.js",
+    "start": "npm run build & npm run start_server"
   },
   "dependencies": {
     "express": "^4.21.1",

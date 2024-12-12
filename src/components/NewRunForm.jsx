@@ -2,9 +2,15 @@ import React from 'react';
 import { Model, Survey } from 'survey-react-ui';
 import '../styles/run-form.css';
 import 'survey-core/defaultV2.min.css';
+import hachLogo from '../images/HACH-LOGO-Blue.svg';
 
 const runFormModel = {
     name: 'runtimeForm',
+    logo: hachLogo,
+    logoPosition: 'left',
+    logoFit: 'contain',
+    logoHeight: '90px',
+    logoWidth: '100px',
     title: 'Assembly Runtime Form',
     elements: [
         {
@@ -29,11 +35,18 @@ const runFormModel = {
                     isRequired: true
                 },
                 {
+                    name: 'lineNumber',
+                    title: 'Line #',
+                    type: 'radiogroup',
+                    colCount: 0,
+                    choices: ["1", "2"]
+                },
+                {
                     name: 'assemblyNumber',
                     type: 'text',
                     title: 'Assembly #',
                     inputType: 'number',
-                    step: 'none',
+                    startWithNewLine: false,
                     isRequired: true
                 },
                 {
@@ -70,7 +83,8 @@ const runFormModel = {
                 },
                 {
                     name: 'delayNotes',
-                    type: 'text',
+                    type: 'comment',
+                    autoGrow: true,
                     title: 'Additional notes (optional)',
                     visibleIf: '{panel.delayType} notempty'
                 }
