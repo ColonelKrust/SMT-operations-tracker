@@ -1,0 +1,19 @@
+#navPageTitle {
+    text-align: center;
+    font-size: 50px;
+}
+
+#navButtonsDiv {
+    width: 100vw;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.navPageButtons {
+    height: 75px;
+    width: 300px;
+    margin: 25px;
+    font-size: 25px;
+}
