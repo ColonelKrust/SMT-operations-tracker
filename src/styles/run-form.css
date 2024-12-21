@@ -7,3 +7,13 @@ input::-webkit-outer-spin-button {
 .sd-root-modern {
     --primary: #007EB5
 }
+
+.homeButton {
+    position: absolute;
+    z-index: 1;
+    right: 25px;
+    top: 6vh;
+    border: none;
+    background: none;
+    color: #007EB5;
+}
