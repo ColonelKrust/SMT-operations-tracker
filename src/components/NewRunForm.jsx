@@ -1,8 +1,10 @@
 import React from 'react';
 import { Model, Survey } from 'survey-react-ui';
+import { NavLink } from "react-router";
+import hachLogo from '../images/HACH-LOGO-Blue.svg';
+import { BsHouse } from "react-icons/bs";
 import '../styles/run-form.css';
 import 'survey-core/defaultV2.min.css';
-import hachLogo from '../images/HACH-LOGO-Blue.svg';
 
 const runFormModel = {
     name: 'runtimeForm',
@@ -39,7 +41,8 @@ const runFormModel = {
                     title: 'Line #',
                     type: 'radiogroup',
                     colCount: 0,
-                    choices: ["1", "2"]
+                    choices: ["1", "2"],
+                    isRequired: true
                 },
                 {
                     name: 'assemblyNumber',
@@ -50,10 +53,18 @@ const runFormModel = {
                     isRequired: true
                 },
                 {
-                    name: 'runtime',
+                    name: 'M1Runtime',
                     type: 'text',
-                    title: 'Total Runtime',
+                    title: 'M1 Runtime',
                     inputType: 'number',
+                    isRequired: true
+                },
+                {
+                    name: 'M2Runtime',
+                    type: 'text',
+                    title: 'M2 Runtime',
+                    inputType: 'number',
+                    startWithNewLine: false,
                     isRequired: true
                 }
             ]
@@ -71,7 +82,7 @@ const runFormModel = {
                     name: 'delayType',
                     type: 'dropdown',
                     title: 'Select a delay type',
-                    choices: ['Feeder Issues', 'Stick Issues', 'DEK Issues', 'Break', 'Replens']
+                    choices: ['Feeder Issues', 'Stick Issues', 'Tray Issues', 'DEK Issues', 'Break', 'Replens']
                 },
                 {
                     name: 'totalDelay',
@@ -97,5 +108,12 @@ const runFormModel = {
 export default function NewRunForm() {
     const runForm = new Model(runFormModel);
 
-    return (<Survey model={runForm} />);
+    return (
+        <div id='runFormDiv'>
+            <NavLink to='/'>
+                <button className='homeButton'><BsHouse size='30'/></button>
+            </NavLink>
+            <Survey model={runForm} />
+        </div>
+);
 }
