@@ -1,0 +1,36 @@
+#navPageTitle {
+    text-align: center;
+    font-size: 50px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 4%;
+    color: white;
+    font-family: verdana;
+}
+
+#navButtonsDiv {
+    width: 100vw;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.navPageButtons {
+    height: 75px;
+    width: 300px;
+    margin: 40px;
+    font-size: 28px;
+    color: white;
+    border-radius: 15px;
+    background-color: #007EB5;
+}
+
+#navPageBackground {
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    opacity: 85%;
+}
