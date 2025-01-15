@@ -5,7 +5,7 @@ input::-webkit-outer-spin-button {
 }
 
 .sd-root-modern {
-    --primary: #007EB5
+    --primary: #007EB5;
 }
 
 .homeButton {
