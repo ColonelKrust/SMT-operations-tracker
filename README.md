@@ -1,7 +1,8 @@
 # SMT Line Tracker
 Data tracking and visualization for circuit board manufacturing operations within SMT departments.
 
-#Landing Page
+## Landing Page
+
 <img width="1792" alt="Screenshot 2025-01-20 at 3 10 55 PM" src="https://github.com/user-attachments/assets/b03bc76a-c4d1-4dde-a13e-ab02bd16eb00" />
 
 The landing page grants the user with two options for naviagtion through the app:
