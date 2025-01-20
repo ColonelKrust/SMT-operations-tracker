@@ -1,13 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router';
-import hachBackground from '../images/hach_water1.jpg';
+import hachBackground from '../images/hach_loveland_R&D.png';
+import hachLogo from '../images/HACH-LOGO-Blue.svg';
 import '../styles/nav-page.css';
 
 export default function NavigationPage() {
     return(
         <div id='navPageDiv'>
-            <img id='navPageBackground' src={hachBackground} />
             <h1 id='navPageTitle'>SMT Line Tracker</h1>
+            <img id='navPageLogo' src={hachLogo} />
+            <div id='backgroundDiv'>
+                <img id='navPageBackground' src={hachBackground} />
+            </div>
             <div id='navButtonsDiv'>
                 <NavLink to='/runtimeData'>
                     <button id='navPageDataButton' className='navPageButtons'>Runtime Data</button>
