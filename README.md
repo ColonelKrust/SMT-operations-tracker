@@ -1,2 +1,2 @@
-# SMT-Line-tracker
+# SMT Line Tracker
 Data tracking and visualization for circuit board manufacturing operations within SMT departments.
