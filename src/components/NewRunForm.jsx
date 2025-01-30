@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Model, Survey } from 'survey-react-ui';
 import { NavLink } from "react-router";
 import hachLogo from '../images/HACH-LOGO-Blue.svg';
@@ -107,6 +108,27 @@ const runFormModel = {
 
 export default function NewRunForm() {
     const runForm = new Model(runFormModel);
+
+    runForm.onComplete.add((sender) => {
+        const data = {
+            date: sender.data.date,
+            operatorName: sender.data.operatorName,
+            lineNumber: sender.data.lineNumber,
+            assemblyNumber: sender.data.assemblyNumber,
+            m1Time: sender.data.M1Runtime,
+            m2Time: sender.data.M2Runtime,
+            runtimeDelays: sender.data.runtimeDelays
+        }
+
+        //axios request to server to save data in postgres
+        axios.post('/saveFormData', data)
+        .then(() => {
+            console.log('Successfully saved run data');
+        })
+        .catch((err) => {
+            console.log('Error saving data to database: ', err);
+        })
+    });
 
     return (
         <div id='runFormDiv'>
