@@ -1,4 +1,7 @@
 #runtimeBarGraph {
     position: absolute;
     top: 30vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-bottom: 4vh;
 }

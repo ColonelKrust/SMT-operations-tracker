@@ -25,9 +25,9 @@ const runFormModel = {
                     name: 'date',
                     type: 'text',
                     title: 'Date',
-                    inputType: 'date',
-                    defaultValueExpression: 'today()',
-                    minValueExpression: 'today()',
+                    inputType: 'datetime',
+                    defaultValueExpression: 'currentDate()',
+                    minValueExpression: 'currentDate()',
                     isRequired: true
                 },
                 {
@@ -110,17 +110,25 @@ export default function NewRunForm() {
     const runForm = new Model(runFormModel);
 
     runForm.onComplete.add((sender) => {
+        let dateAndTime = sender.data.date.split(' ');
+        if (dateAndTime.length === 1) {
+            dateAndTime = sender.data.date.split('T');
+        }
+        const date = dateAndTime[0];
+        const time = dateAndTime[1];
+
         const data = {
-            date: sender.data.date,
+            date: date,
             operatorName: sender.data.operatorName,
             lineNumber: sender.data.lineNumber,
             assemblyNumber: sender.data.assemblyNumber,
             m1Time: sender.data.M1Runtime,
             m2Time: sender.data.M2Runtime,
-            runtimeDelays: sender.data.runtimeDelays
+            runtimeDelays: sender.data.runtimeDelays,
+            time: time
         }
 
-        //axios request to server to save data in postgres
+        // axios request to server to save data in postgres
         axios.post('/saveFormData', data)
         .then(() => {
             console.log('Successfully saved run data');
