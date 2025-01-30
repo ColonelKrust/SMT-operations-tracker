@@ -141,7 +141,7 @@ export default function NewRunForm() {
     return (
         <div id='runFormDiv'>
             <NavLink to='/'>
-                <button className='homeButton'><BsHouse size='30'/></button>
+                <button id='formHomeButton' className='homeButton'><BsHouse size='30'/></button>
             </NavLink>
             <Survey model={runForm} />
         </div>
