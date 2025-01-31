@@ -8,12 +8,7 @@ input::-webkit-outer-spin-button {
     --primary: #007EB5;
 }
 
-.homeButton {
-    position: absolute;
-    z-index: 1;
-    right: 25px;
-    top: 6vh;
-    border: none;
-    background: none;
+#formHomeButton {
     color: #007EB5;
+    top: 6vh;
 }

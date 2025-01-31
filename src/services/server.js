@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import runFormRouter from './routes/runFormRoutes.js';
-import { saveFormData } from './db.js';
+import { saveFormData, getBarGraphData } from './db.js';
 
 const app = express();
 const __dirname = import.meta.dirname;
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static(build));
 app.use('/newRunForm', runFormRouter);
 
-app.get('*', (req, res) => {
+app.get(['/', '/runtimeData', '/newRunForm', '/favicon.'], (req, res) => {
     res.sendFile(path.join(build, 'index.html'));
 });
 
@@ -29,8 +29,20 @@ app.post('/saveFormData', async (req, res) => {
     })
     .catch((err) => {
         res.status(500).send(err);
-    })
+    });
 
+});
+
+app.get('/getRuntimeGraphData', async (req, res) => {
+    const limit = 6;
+
+    await getBarGraphData(limit)
+    .then((queryResult) => {
+        res.status(200).send(queryResult);
+    })
+    .catch((err) => {
+        res.status(500).send(err);
+    });
 });
 
 app.listen(port, (req, res) => {

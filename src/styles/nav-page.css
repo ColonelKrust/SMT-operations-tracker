@@ -1,4 +1,4 @@
-#navPageTitle {
+/* #navPageTitle {
     position: absolute;
     top: -4%;
     left: 0px;
@@ -11,7 +11,7 @@
     background: #007EB5;
     color: white;
     font-family: verdana;
-}
+} */
 
 #navButtonsDiv {
     width: 100vw;
@@ -32,12 +32,12 @@
     background-color: #007EB5;
 }
 
-#navPageLogo {
+/* #navPageLogo {
     position: absolute;
     width: 15%;
     top: 3%;
     left: 7%;
-}
+} */
 
 #navPageBackground {
     position: absolute;

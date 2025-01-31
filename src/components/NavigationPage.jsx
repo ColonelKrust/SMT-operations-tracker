@@ -7,8 +7,8 @@ import '../styles/nav-page.css';
 export default function NavigationPage() {
     return(
         <div id='navPageDiv'>
-            <h1 id='navPageTitle'>SMT Line Tracker</h1>
-            <img id='navPageLogo' src={hachLogo} />
+            <h1 id='navPageTitle' className='pageTitle'>SMT Line Tracker</h1>
+            <img id='navPageLogo' className='titleLogo' src={hachLogo} />
             <div id='backgroundDiv'>
                 <img id='navPageBackground' src={hachBackground} />
             </div>

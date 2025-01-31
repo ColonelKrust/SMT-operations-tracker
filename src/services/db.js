@@ -24,8 +24,8 @@ client.connect()
 //save data from runtime form to postgres
 export const saveFormData = (data) => {
     data.runtimeDelays = JSON.stringify(data.runtimeDelays);
-    const query = 'INSERT INTO SMT_runs (run_id, date, assembly_number, line_number, operator_name, m1_runtime, m2_runtime, delays) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);';
-    const values = [data.run_id, data.date, data.assemblyNumber, data.lineNumber, data.operatorName, data.m1Time, data.m2Time, data.runtimeDelays];
+    const query = 'INSERT INTO SMT_runs (run_id, date, assembly_number, line_number, operator_name, m1_runtime, m2_runtime, delays, time) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);';
+    const values = [data.run_id, data.date, data.assemblyNumber, data.lineNumber, data.operatorName, data.m1Time, data.m2Time, data.runtimeDelays, data.time];
 
     return new Promise((resolve, reject) => {
         client.query(query, values)
@@ -36,4 +36,19 @@ export const saveFormData = (data) => {
             reject(err);
         });
     });
-}
+};
+
+//retrieve data from postgres for Runtime Bar Graph component
+export const getBarGraphData = (limit) => {
+    const query = 'SELECT * FROM SMT_runs ORDER BY date, time LIMIT $1;'
+    
+    return new Promise((resolve, reject) => {
+        client.query(query, [limit])
+        .then((queryResult) => {
+            resolve(queryResult);
+        })
+        .catch((err) => {
+            reject(err);
+        });
+    });
+};
