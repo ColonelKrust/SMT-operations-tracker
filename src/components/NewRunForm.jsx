@@ -56,14 +56,14 @@ const runFormModel = {
                 {
                     name: 'M1Runtime',
                     type: 'text',
-                    title: 'M1 Runtime',
+                    title: 'M1 Runtime (in minutes)',
                     inputType: 'number',
                     isRequired: true
                 },
                 {
                     name: 'M2Runtime',
                     type: 'text',
-                    title: 'M2 Runtime',
+                    title: 'M2 Runtime (in minutes)',
                     inputType: 'number',
                     startWithNewLine: false,
                     isRequired: true

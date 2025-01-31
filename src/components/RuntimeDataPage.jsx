@@ -7,7 +7,7 @@ import { NavLink } from "react-router";
 import '../styles/runtime-data.css';
 
 export default function RuntimeDataPage() {
-
+        
     return (
         <div id='runtimeDataDiv'>
             <h1 id='dataTitle' className='pageTitle'>SMT Runtime Data</h1>

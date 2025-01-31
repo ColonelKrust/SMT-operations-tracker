@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Chart } from 'chart.js'
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import axios from 'axios';
 
 Chart.register(ChartDataLabels);
 
-export default function RuntimeBarGraph() {
+export default function RuntimeBarGraph({ getRuntimeData }) {
 
-    const runtimeData = {}
+    const [runtimeData, setRuntimeData] = useState([]);
+    
+    //upon first render make get request to server to retrieve graph data populate runtimeData with arrays of row objects
+    useEffect(() => {
+        const retrieveBarGraphData = async () => {
+            await axios.get('/getRuntimeGraphData')
+            .then((queryResult) => {
+                setRuntimeData(queryResult.data.rows);
+            })
+            .catch((err) => {
+                console.log('Error getting data for Bar Graph from db: ', err);
+            });
+    
+        }
+        retrieveBarGraphData();
+    }, []);
 
     const windowWidth = window.innerWidth;
     const newFontSize = Math.max(10, Math.min(40, windowWidth / 60));
@@ -15,16 +31,16 @@ export default function RuntimeBarGraph() {
     const chartTitleSize = newFontSize + 15;
 
     const data = {
-        labels: ['8403630', '8483630', '9500230', '6121230'],
+        labels: runtimeData.map((row) => row['assembly_number'].toString()),
         datasets: [
             {
                 label: 'M1 Runtime',
-                data: [123, 145, 203, 198],
+                data: runtimeData.map((row) => row['m1_runtime']),
                 stack: 'Stack 0'
             },
             {
                 label: 'M2 Runtime',
-                data: [145, 156, 232, 221],
+                data: runtimeData.map((row) => row['m2_runtime']),
                 stack: 'Stack 1'
             }
         ]

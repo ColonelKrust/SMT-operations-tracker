@@ -40,5 +40,15 @@ export const saveFormData = (data) => {
 
 //retrieve data from postgres for Runtime Bar Graph component
 export const getBarGraphData = (limit) => {
-    const query = 'SELECT * FROM SMT_runs ORDER BY '
-}
+    const query = 'SELECT * FROM SMT_runs ORDER BY date, time LIMIT $1;'
+    
+    return new Promise((resolve, reject) => {
+        client.query(query, [limit])
+        .then((queryResult) => {
+            resolve(queryResult);
+        })
+        .catch((err) => {
+            reject(err);
+        });
+    });
+};
