@@ -15,9 +15,7 @@ export default function RuntimeDataPage() {
                 <button id='dataHomeButton' className='homeButton'><BsHouse size='30'/></button>
             </NavLink>
             <img id='dataPageLogo' className='titleLogo' src={hachLogo} />
-            <div id='runtimeBarGraphDiv'>
-                <RuntimeBarGraph />
-            </div>
+            <RuntimeBarGraph />
         </div>
     )
 }

@@ -10,3 +10,41 @@
     color: white;
     top: 7vh;
 }
+
+#runtimeGraphInputs {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 32vh;
+    left: 72vw;
+    font-family: Verdana;
+    font-size: 1.5vh;
+    z-index: 1;
+}
+
+.selectContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+
+.css-13cymwt-control {
+    min-height: 0px !important;
+    align-content: center;
+    height: 3.5vh;
+}
+
+.selectLabel {
+    padding: 5px;
+}
+
+.css-t3ipsp-control {
+    align-content: center;
+    min-height: 0px !important;
+    height: 3.5vh;
+}
+
+.css-1nmdiq5-menu {
+    width: max-content !important;
+}

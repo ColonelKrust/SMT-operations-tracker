@@ -39,11 +39,23 @@ export const saveFormData = (data) => {
 };
 
 //retrieve data from postgres for Runtime Bar Graph component
-export const getBarGraphData = (limit) => {
-    const query = 'SELECT * FROM SMT_runs ORDER BY date, time LIMIT $1;'
+export const getBarGraphData = (limit, selectedAssy, selectedLine) => {
+    let query = 'SELECT * FROM SMT_runs ORDER BY date DESC, time DESC LIMIT $1;';
+    let values = [limit];
+
+    if (selectedAssy !== 'All' && selectedLine === 'All'){
+        query = 'SELECT * FROM SMT_runs WHERE assembly_number = $1 ORDER BY date DESC, time DESC LIMIT $2;'
+        values = [selectedAssy, limit];
+    } else if (selectedAssy === 'All' && selectedLine !== 'All') {
+        query = 'SELECT * FROM SMT_runs WHERE line_number = $1 ORDER BY date DESC, time DESC LIMIT $2;'
+        values = [selectedLine, limit];
+    } else if (selectedAssy !== 'All' && selectedLine !== 'All') {
+        query = 'SELECT * FROM SMT_runs WHERE assembly_number = $1 AND line_number = $2 ORDER BY date DESC, time DESC LIMIT $3;'
+        values = [selectedAssy, selectedLine, limit];
+    }
     
     return new Promise((resolve, reject) => {
-        client.query(query, [limit])
+        client.query(query, values)
         .then((queryResult) => {
             resolve(queryResult);
         })
@@ -52,3 +64,18 @@ export const getBarGraphData = (limit) => {
         });
     });
 };
+
+//get all unique assembly_number values
+export const getAllAssemblyNumbers = () => {
+    const query = 'SELECT DISTINCT assembly_number FROM SMT_runs;'
+
+    return new Promise((resolve, reject) => {
+        client.query(query)
+        .then((queryResult) => {
+            resolve(queryResult);
+        })
+        .catch((err) => {
+            reject(err);
+        });
+    });
+}
